@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta name="monetag" content="9cd1213a232a101f5ac90c042c510703">
+<head>
+   <script>(function(s){s.dataset.zone='11007665',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kuldeep Rai</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- PWA -->
+
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#081221">
+
+<link rel="apple-touch-icon" href="icon-192.png">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="apple-mobile-web-app-title" content="Cric Kld 2026">
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#030712;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* ================= BACKGROUND ================= */
+
+body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    z-index:-2;
+
+    background:
+    radial-gradient(circle at top,#18386d 0%,transparent 35%),
+    radial-gradient(circle at bottom,#001534 0%,transparent 35%),
+    #030712;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    inset:0;
+    z-index:-1;
+
+    background:url("https://www.transparenttextures.com/patterns/dark-mosaic.png");
+    opacity:.05;
+}
+
+/* ================= ALERT ================= */
+
+.alert-box{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+
+    background:linear-gradient(90deg,#00c853,#00e676);
+
+    color:#fff;
+
+    padding:14px 22px;
+
+    border-radius:16px;
+
+    font-size:14px;
+    font-weight:700;
+
+    z-index:99999;
+
+    box-shadow:0 10px 30px rgba(0,255,100,.35);
+
+    animation:slideDown .5s ease;
+}
+
+@keyframes slideDown{
+
+    from{
+        opacity:0;
+        transform:translate(-50%,-20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translate(-50%,0);
+    }
+
+}
+
+/* ================= HEADER ================= */
+
+.topbar{
+    width:100%;
+    padding:12px 15px;
+    background:#081221;
+    border-bottom:1px solid rgba(255,255,255,.07);
+
+    position:sticky;
+    top:0;
+    z-index:999;
+}
+
+.header-flex{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.logo-wrap{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.logo{
+    font-size:clamp(26px,4vw,42px);
+    font-weight:800;
+    color:#ffc400;
+}
+
+.live-badge{
+    background:#ff2d55;
+    padding:6px 14px;
+    border-radius:999px;
+
+    display:flex;
+    align-items:center;
+    gap:7px;
+
+    font-size:13px;
+    font-weight:700;
+
+    box-shadow:0 0 15px rgba(255,45,85,.4);
+}
+
+.dot{
+    width:8px;
+    height:8px;
+    background:#fff;
+    border-radius:50%;
+    animation:pulse 1s infinite;
+}
+
+.user-counter{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(255,255,255,.05);
+
+    padding:6px 12px;
+
+    border-radius:12px;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    min-height:42px;
+}
+
+@keyframes pulse{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.5);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
+}
+
+/* ================= MARQUEE ================= */
+
+.marquee{
+    overflow:hidden;
+    white-space:nowrap;
+
+    background:#0d1624;
+
+    border-top:1px solid rgba(255,255,255,.05);
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.marquee span{
+    display:inline-block;
+    padding:10px 0;
+
+    color:#25d366;
+
+    font-weight:700;
+
+    animation:marquee 15s linear infinite;
+}
+
+@keyframes marquee{
+
+    0%{
+        transform:translateX(100%);
+    }
+
+    100%{
+        transform:translateX(-100%);
+    }
+
+}
+
+/* ================= PLAYER ================= */
+
+.player-wrapper{
+    width:100%;
+    position:relative;
+    background:#000;
+}
+
+#videoFrame{
+    width:100%;
+    height:56.25vw;
+
+    min-height:220px;
+    max-height:80vh;
+
+    border:none;
+    display:block;
+    background:#000;
+}
+
+/* ================= CHANNEL NAME ================= */
+
+.channel-overlay{
+    position:absolute;
+    top:12px;
+    left:12px;
+
+    background:rgba(0,0,0,.65);
+    backdrop-filter:blur(10px);
+
+    padding:8px 14px;
+
+    border-radius:12px;
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    font-size:13px;
+    font-weight:700;
+
+    z-index:10;
+}
+
+.live-red{
+    width:8px;
+    height:8px;
+
+    background:#ff2d55;
+
+    border-radius:50%;
+
+    animation:pulse 1s infinite;
+}
+
+/* ================= CONTAINER ================= */
+
+.container{
+    width:100%;
+    max-width:1050px;
+    margin:auto;
+    padding:16px;
+}
+
+/* ================= TITLE ================= */
+
+.section-title{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    background:#1d1703;
+    color:#ffd75b;
+
+    border:1px solid rgba(255,215,91,.15);
+
+    padding:9px 15px;
+
+    border-radius:999px;
+
+    font-size:13px;
+    font-weight:700;
+
+    margin-bottom:18px;
+}
+
+/* ================= GRID ================= */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+    gap:12px;
+}
+
+/* ================= CARD ================= */
+
+.card{
+    background:linear-gradient(180deg,#0c1526,#07101c);
+
+    border-radius:20px;
+
+    padding:18px 12px;
+
+    border:2px solid rgba(255,255,255,.05);
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+}
+
+.card.active{
+    border-color:#ffc400;
+    box-shadow:0 0 20px rgba(255,196,0,.18);
+}
+
+.card h3{
+    font-size:16px;
+    line-height:1.4;
+    margin-bottom:5px;
+}
+
+.card p{
+    font-size:12px;
+    color:#b7c5d8;
+}
+
+/* ================= AD BOX ================= */
+.ad-box{
+    margin-top:22px;
+
+    background:linear-gradient(180deg,#101826,#0b1220);
+
+    border-radius:22px;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    padding:15px;
+
+    overflow:hidden;
+}
+
+.ad-label{
+    color:#ffc400;
+    font-size:12px;
+    font-weight:700;
+
+    margin-bottom:20px;
+}
+
+.ad-content{
+    width:650px;
+    min-height:550px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:14px;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+/* FULL WIDTH AD IFRAME */
+
+.ad-content iframe{
+    width:1000px !
+    max-width:000px !
+
+    height:15px 
+
+    border:none !important;
+
+    border-radius:19px;
+
+    display:block;
+}
+
+/* SCRIPT GENERATED ADS FIX */
+
+.ad-content ins,
+.ad-content div{
+    width:150px !important;
+    max-width:10px !important;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .ad-content{
+        min-height:80px;
+    }
+
+    .ad-content iframe{
+        height:80px !important;
+    }
+
+}
+    /* ================= WIDGET BOX ================= */
+
+.widget-box{
+    margin-top:22px;
+
+    background:linear-gradient(180deg,#09111d,#050b14);
+
+    border-radius:24px;
+
+    padding:15px;
+
+    border:1px solid rgba(255,255,255,.06);
+}
+
+.widget-title{
+    font-size:15px;
+    font-weight:700;
+
+    color:#58b7ff;
+
+    margin-bottom:12px;
+}
+
+.jio-widget{
+    width:100%;
+    height:500px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#000;
+}
+
+/* ================= SHARE BOX ================= */
+
+.share-box{
+    margin-top:22px;
+
+    background:linear-gradient(180deg,#111827,#0b1220);
+
+    border-radius:24px;
+
+    padding:18px;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    text-align:center;
+}
+
+.share-title{
+    font-size:16px;
+    font-weight:700;
+
+    color:#25d366;
+
+    margin-bottom:14px;
+}
+
+/* ================= FLOATING WHATSAPP ================= */
+
+.floating-whatsapp{
+    position:fixed;
+
+    right:20px;
+    bottom:20px;
+
+    width:65px;
+    height:65px;
+
+    border-radius:50%;
+
+    background:#25d366;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:30px;
+
+    text-decoration:none;
+
+    color:#fff;
+
+    z-index:99999;
+
+    box-shadow:0 0 25px rgba(37,211,102,.5);
+
+    animation:floatPulse 1.5s infinite;
+}
+
+@keyframes floatPulse{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.1);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:700px){
+
+    .container{
+        padding:12px;
+    }
+
+    .grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .header-flex{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .user-counter{
+        width:100%;
+    }
+
+    .jio-widget{
+        height:420px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .logo{
+        font-size:24px;
+    }
+
+    .floating-whatsapp{
+        width:58px;
+        height:58px;
+        font-size:26px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ALERT -->
+
+<div class="alert-box" id="alertBox">
+    ⚡ Join Now For Other Match Live Links ⚡
+</div>
+
+<!-- ================= HEADER ================= -->
+
+<div class="topbar">
+
+    <div class="header-flex">
+
+        <div class="logo-wrap">
+
+            <div class="logo">
+                Cric Kld 2026
+            </div>
+
+            <div class="live-badge">
+                <div class="dot"></div>
+                LIVE
+            </div>
+
+        </div>
+
+        <div class="user-counter">
+
+            <script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script>
+
+            <script type="text/javascript">
+            sc_online_i(1734343,"ffffff","#ff1e05");
+            </script>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= MARQUEE ================= -->
+
+<div class="marquee">
+
+    <span>
+        ⚡ JOIN WHATSAPP CHANNEL FOR LIVE MATCH LINKS • FAST UPDATES • HD STREAMS ⚡
+    </span>
+
+</div>
+
+<!-- ================= VIDEO PLAYER ================= -->
+
+<div class="player-wrapper">
+
+    <div class="channel-overlay">
+
+        <div class="live-red"></div>
+
+        <span id="channelName">
+            Hindi IND only
+        </span>
+
+    </div>
+
+    <iframe
+        id="videoFrame"
+        src=""
+        allow="
+        autoplay;
+        encrypted-media;
+        fullscreen;
+        picture-in-picture"
+        allowfullscreen
+        scrolling="no"
+        referrerpolicy="no-referrer">
+    </iframe>
+
+</div>
+
+<!-- ================= CONTENT ================= -->
+
+<div class="container">
+
+    <div class="section-title">
+        📺 LIVE CHANNELS
+    </div>
+
+    <div class="grid">
+
+        <div class="card active" data-id="hindi">
+            <h3>Hindi IND only</h3>
+            <p>High Quality</p>
+        </div>
+
+        <div class="card" data-id="english">
+            <h3>English IND only</h3>
+            <p>High Quality</p>
+        </div>
+
+        <div class="card" data-id="tamil">
+            <h3>Tamil IND only</h3>
+            <p>High Quality</p>
+        </div>
+
+        <div class="card" data-id="kayo">
+            <h3>Kayo Hindi only</h3>
+            <p>High Quality</p>
+        </div>
+<div class="card" data-id="movies">
+            <h3>Movie See only</h3>
+            <p>High Quality</p>
+</div>
+    </div>
+
+    <!-- ================= AD BOX ================= -->
+
+    <div class="ad-box">
+
+        <div class="ad-label">
+            Sponsored
+        </div>
+
+        <div class="ad-content">
+   <script>
+  atOptions = {
+    'key' : '438e1343768156b1ec8e7e10be5a0232',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 1200,
+    'params' : {}
+  };
+</script>
+
+<script src="https://www.highperformanceformat.com/438e1343768156b1ec8e7e10be5a0232/invoke.js"></script>
+        </div>
+
+    </div>
+
+    <!-- ================= JIO WIDGET ================= -->
+
+    <div class="widget-box">
+
+        <div class="widget-title">
+            🏏 LIVE CRICKET UPDATES
+        </div>
+
+        <iframe
+        class="jio-widget"
+        src="https://widget.jionews.com/jiotv-cricket/prod/v1/index.html?theme=dark&ismobile=true"
+        scrolling="yes"
+        allowfullscreen>
+        </iframe>
+
+    </div>
+
+    <!-- ================= SHARE BOX ================= -->
+
+    <div class="share-box">
+
+        <div class="share-title">
+            📢 SHARE THIS STREAM
+        </div>
+<!-- ShareThis BEGINS -->
+<div class="sharethis-share-buttons" data-type="inline-share-buttons" data-labels="counts" data-show_total="true" data-size="small">
+<span data-network="facebook"></span>
+<span data-network="twitter"></span>
+<span data-network="pinterest"></span>
+<span data-network="email"></span>
+<span data-network="sms"></span>
+<span data-network="sharethis"></span>
+<span data-network="telegram"></span>
+<span data-network="whatsapp"></span>
+<span data-network="mailru"></span>
+<span data-network="googlebookmarks"></span>
+<span data-network="messenger"></span>
+<span data-network="reddit"></span>
+<span data-network="print"></span>
+</div>
+<!-- ShareThis ENDS -->
+       
+    </div>
+
+</div>
+
+<!-- FLOATING WHATSAPP -->
+
+<a class="floating-whatsapp"
+href="https://whatsapp.com/channel/0029VbAzTAVBfxo0QPdrB11T"
+target="_blank">
+
+💬
+
+</a>
+
+<!-- SHARE SCRIPT -->
+<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js" defer></script>
+
+<script>
+/* ================= ALERT AUTO HIDE ================= */
+
+setTimeout(()=>{
+
+    document.getElementById("alertBox").style.display="none";
+
+},5000);
+
+/* ================= CHANNEL DATA ================= */
+
+const channels = {
+
+    hindi : {
+        name : "Hindi IND only",
+        url  : "https://crickld2026.netlify.app/str1"
+    },
+
+    english : {
+        name : "English IND only",
+        url  : "https://crickld2026.netlify.app/all/eng"
+    },
+
+    tamil : {
+        name : "Tamil IND only",
+        url  : "https://crickld2026.netlify.app/all/Tamil"
+    },
+
+    kayo : {
+        name : "Kayo Hindi IND only",
+        url  : "https://crickld2026.netlify.app/all/kayo"
+    },
+movies : {
+        name : "Kayo Hindi IND only",
+        url  : "https://reliable-swan-62aec4.netlify.app/"
+    },
+    
+    
+};
+
+const videoFrame =
+document.getElementById("videoFrame");
+
+const channelName =
+document.getElementById("channelName");
+
+/* ================= LOAD CHANNEL ================= */
+
+function loadChannel(id){
+
+    if(!channels[id]){
+
+        id = "hindi";
+
+    }
+
+    const channel = channels[id];
+
+    channelName.innerText = channel.name;
+
+    videoFrame.src = "";
+
+    setTimeout(()=>{
+
+        videoFrame.src = channel.url;
+
+    },100);
+
+    document.querySelectorAll(".card")
+    .forEach(card=>{
+
+        card.classList.remove("active");
+
+        if(card.dataset.id === id){
+
+            card.classList.add("active");
+
+        }
+
+    });
+
+    history.replaceState(
+    null,
+    null,
+    "?channel=" + id
+    );
+
+}
+
+/* ================= CARD CLICK ================= */
+
+document.querySelectorAll(".card")
+.forEach(card=>{
+
+    card.addEventListener("click",()=>{
+
+        loadChannel(card.dataset.id);
+
+    });
+
+});
+
+/* ================= OPEN FROM URL ================= */
+
+const params =
+new URLSearchParams(window.location.search);
+
+loadChannel(
+params.get("channel") || "hindi"
+);
+
+</script>
+<!-- ================= PWA INSTALL POPUP ================= -->
+
+<div id="installPopup" style="
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.75);
+backdrop-filter:blur(10px);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:999999;
+padding:20px;
+">
+
+<div style="
+width:100%;
+max-width:360px;
+background:linear-gradient(180deg,#101826,#0b1220);
+border:1px solid rgba(255,255,255,.08);
+border-radius:28px;
+padding:24px;
+text-align:center;
+box-shadow:0 0 40px rgba(0,0,0,.5);
+animation:popupShow .35s ease;
+">
+
+<img
+src="icon-192.png"
+style="
+width:90px;
+height:90px;
+border-radius:22px;
+margin-bottom:14px;
+"
+>
+
+<h2 style="
+font-size:24px;
+margin-bottom:10px;
+color:#ffc400;
+font-weight:800;
+">
+Cric Kld 2026
+</h2>
+
+<p style="
+font-size:14px;
+line-height:1.7;
+color:#c8d2e0;
+margin-bottom:22px;
+">
+⚡ Install App For Fast Live Streaming <br>
+🚀 Full Screen Experience <br>
+📺 Open Like Native App
+</p>
+
+<button id="installBtn" style="
+width:100%;
+padding:15px;
+border:none;
+border-radius:16px;
+background:linear-gradient(90deg,#00c853,#00e676);
+color:#fff;
+font-size:16px;
+font-weight:800;
+cursor:pointer;
+margin-bottom:12px;
+">
+⬇ DOWNLOAD APP
+</button>
+
+<button id="closePopup" style="
+width:100%;
+padding:13px;
+border:none;
+border-radius:14px;
+background:#1b2638;
+color:#d7e0ee;
+font-size:14px;
+font-weight:700;
+cursor:pointer;
+">
+Continue Website
+</button>
+
+</div>
+
+</div>
+
+<style>
+
+@keyframes popupShow{
+
+from{
+transform:scale(.8);
+opacity:0;
+}
+
+to{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
+</style>
+
+<script>
+
+/* ================= SERVICE WORKER ================= */
+
+if ('serviceWorker' in navigator) {
+
+window.addEventListener('load', () => {
+
+navigator.serviceWorker.register('/sw.js')
+
+.then(() => {
+
+console.log("PWA Ready");
+
+});
+
+});
+
+}
+
+/* ================= INSTALL APP ================= */
+
+let deferredPrompt;
+
+const installPopup =
+document.getElementById("installPopup");
+
+const installBtn =
+document.getElementById("installBtn");
+
+const closePopup =
+document.getElementById("closePopup");
+
+window.addEventListener('beforeinstallprompt', (e) => {
+
+e.preventDefault();
+
+deferredPrompt = e;
+
+setTimeout(()=>{
+
+installPopup.style.display = "flex";
+
+},1500);
+
+});
+
+installBtn.addEventListener("click", async () => {
+
+if(!deferredPrompt) return;
+
+deferredPrompt.prompt();
+
+const { outcome } =
+await deferredPrompt.userChoice;
+
+if(outcome === "accepted"){
+
+installBtn.innerHTML = "✅ INSTALLING...";
+
+setTimeout(()=>{
+
+installPopup.style.display = "none";
+
+},1200);
+
+}
+
+deferredPrompt = null;
+
+});
+
+closePopup.addEventListener("click",()=>{
+
+installPopup.style.display = "none";
+
+});
+
+window.addEventListener('appinstalled', () => {
+
+installPopup.innerHTML = `
+
+<div style="
+background:linear-gradient(180deg,#101826,#0b1220);
+padding:28px;
+border-radius:24px;
+text-align:center;
+max-width:340px;
+width:100%;
+">
+
+<h2 style="
+color:#00e676;
+font-size:28px;
+margin-bottom:12px;
+">
+✅ App Installed
+</h2>
+
+<p style="
+color:#d7e0ee;
+font-size:15px;
+line-height:1.7;
+">
+Cric Kld 2026 Successfully Installed 🚀
+</p>
+
+</div>
+
+`;
+
+installPopup.style.display = "flex";
+
+setTimeout(()=>{
+
+installPopup.style.display = "none";
+
+},2500);
+
+});
+
+</script>
+</body>
+</html>
