@@ -1132,5 +1132,120 @@ installPopup.style.display = "none";
 });
 
 </script>
+    <script>
+
+/* ================= DEVTOOLS DETECTION ================= */
+
+(function () {
+
+    function detectDevTools() {
+
+        const widthThreshold =
+        window.outerWidth - window.innerWidth > 160;
+
+        const heightThreshold =
+        window.outerHeight - window.innerHeight > 160;
+
+        if (widthThreshold || heightThreshold) {
+
+            document.body.innerHTML = `
+
+            <div style="
+            background:#000;
+            color:#0f0;
+            height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            flex-direction:column;
+            font-family:monospace;
+            text-align:center;
+            padding:30px;
+            ">
+
+            <h1>Protected Source</h1>
+
+            <p>
+            Unauthorized Inspection Detected
+            </p>
+
+            </div>
+            `;
+
+        }
+
+    }
+
+    setInterval(detectDevTools, 1000);
+
+})();
+    </script>
 </body>
+    <script>
+/* ================= ANTI INSPECT ================= */
+
+(() => {
+
+    const blockKeys = (e) => {
+
+        if (
+            e.keyCode === 123 ||
+            (e.ctrlKey && e.shiftKey &&
+            ['I','J','C','K'].includes(e.key.toUpperCase())) ||
+            (e.ctrlKey &&
+            ['U','S'].includes(e.key.toUpperCase()))
+        ) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            document.body.innerHTML = `
+            <div style="
+            height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:#000;
+            color:#0f0;
+            font-size:22px;
+            font-family:monospace;
+            text-align:center;
+            padding:20px;
+            ">
+            ACCESS DENIED
+            </div>
+            `;
+
+            return false;
+        }
+
+    };
+
+    document.addEventListener('keydown', blockKeys);
+
+    document.addEventListener('contextmenu', e => {
+        e.preventDefault();
+    });
+
+    document.addEventListener('copy', e => {
+        e.preventDefault();
+
+        const fakeCode = `
+##################################################
+# ACCESS BLOCKED
+# REAL SOURCE NOT AVAILABLE
+##################################################
+
+console.log("Nice Try 😎");
+
+function fakePlayer(){
+   return "403";
+}
+`;
+
+        e.clipboardData.setData('text/plain', fakeCode);
+    });
+
+})();
+    </script>
 </html>
