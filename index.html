@@ -682,7 +682,11 @@ body::after{
     </div>
 
     <div class="grid">
-
+        
+<div class="card" data-id="kayo">
+            <h3>Kayo Hindi only</h3>
+            <p>High Quality</p>
+</div>
         
 
         <div class="card" data-id="english">
@@ -695,10 +699,7 @@ body::after{
             <p>High Quality</p>
         </div>
 
-        <div class="card" data-id="kayo">
-            <h3>Kayo Hindi only</h3>
-            <p>High Quality</p>
-        </div>
+        
 <div class="card" data-id="movies">
             <h3>Movie See only</h3>
             <p>High Quality</p>
@@ -901,7 +902,7 @@ const params =
 new URLSearchParams(window.location.search);
 
 loadChannel(
-params.get("channel") || "hindi"
+params.get("channel") || "kayo"
 );
 
 </script>
