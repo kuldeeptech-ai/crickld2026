@@ -11,10 +11,9 @@
 <script src="//content.jwplatform.com/libraries/SAHhwvZq.js"></script>
 
     
-    <style>
+ <style>
 html,
-body,
-#player {
+body {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -23,80 +22,25 @@ body,
     background: #000;
 }
 
-.jwplayer {
-    position: fixed !important;
-    inset: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    background: #000 !important;
-}
-
-.jw-aspect {
-    padding-top: 0 !important;
-}
-
-iframe {
-    width: 100% !important;
-    height: 100% !important;
-    border: 0 !important;
+#player-frame {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    border: 0;
+    background: #000;
 }
 </style>
 
-<script>
-/* EXISTING JWPLAYER INSTANCE */
-const player = jwplayer("player");
+<iframe
+    id="player-frame"
+    src="https://crickld2026.netlify.app/aioplayer?id=1108"
+    allowfullscreen
+    webkitallowfullscreen
+    mozallowfullscreen
+    frameborder="0">
+</iframe>
 
-
-/* LOAD SOURCE */
-player.load([{
-    sources: [{
-        file: "https://crickld2026.netlify.app/aioplayer?id=1108"
-    }]
-}]);
-
-
-/* FORCE FULLSCREEN LAYOUT */
-player.on("ready", function () {
-
-    const container =
-    player.getContainer();
-
-    container.style.position =
-    "fixed";
-
-    container.style.top =
-    "0";
-
-    container.style.left =
-    "0";
-
-    container.style.width =
-    "100vw";
-
-    container.style.height =
-    "100vh";
-
-    container.style.zIndex =
-    "999999";
-
-    player.resize(
-        window.innerWidth,
-        window.innerHeight
-    );
-
-});
-
-
-/* AUTO RESIZE */
-window.addEventListener("resize", function () {
-
-    player.resize(
-        window.innerWidth,
-        window.innerHeight
-    );
-
-});
-</script>
-
+    
 </body>
 </html>
