@@ -22,14 +22,26 @@ body {
     background: #000;
 }
 
+/* REMOVE GAP */
+iframe {
+    display: block;
+}
+
 /* REAL FULLSCREEN */
 #player-frame {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+
     width: 100vw;
-    height: 100vh;
-    border: 0;
+
+    /* IMPORTANT FIX */
+    height: calc(var(--vh, 1vh) * 100);
+
+    border: none;
     background: #000;
+
+    z-index: 999999;
 }
 </style>
 
@@ -43,44 +55,42 @@ body {
 </iframe>
 
 <script>
-/* FORCE MOBILE FULLSCREEN HEIGHT */
-function fixHeight() {
+/* MOBILE TRUE HEIGHT FIX */
+function setRealHeight() {
 
     let vh =
-    window.innerHeight;
+    window.innerHeight * 0.01;
 
-    document.body.style.height =
-    vh + "px";
-
-    document.documentElement.style.height =
-    vh + "px";
-
-    const iframe =
-    document.getElementById("player-frame");
-
-    iframe.style.height =
-    vh + "px";
+    document.documentElement.style.setProperty(
+        '--vh',
+        `${vh}px`
+    );
 
 }
 
 /* RUN */
-fixHeight();
+setRealHeight();
 
-/* ON ROTATE / RESIZE */
+/* UPDATE ON ROTATE */
 window.addEventListener(
-    "resize",
-    fixHeight
+    'resize',
+    setRealHeight
 );
 
 window.addEventListener(
-    "orientationchange",
-    fixHeight
+    'orientationchange',
+    setRealHeight
 );
 
 
-/* HIDE PAGE SCROLL */
+/* PREVENT SCROLL */
 document.body.style.overflow =
 "hidden";
-</script>    
+
+document.documentElement.style.overflow =
+"hidden";
+</script>
+
+
 </body>
 </html>
