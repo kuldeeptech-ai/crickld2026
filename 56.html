@@ -70,10 +70,7 @@ html, body {
         </div>
     </div>
 </div>
-
 <script>
-jwplayer.key = 'YOUR_JW_PLAYER_KEY';
-
 /* CUSTOM THUMBNAIL */
 const DEMO_THUMB =
 "https://plain-apac-prod-public.komododecks.com/202605/15/BBmtvaRJgaiPJkb68zIS/image.jpg";
@@ -83,155 +80,15 @@ const DEMO_LOGO =
 "https://plain-apac-prod-public.komododecks.com/202605/15/n37lRAW4k538Hu2b6abv/image.png";
 
 
-/* =========================
-   PLAYER SETUP
-========================= */
-const player = jwplayer("player").setup({
-
-    playlist: [{
-
-        file:
-        "https://crickld2026.netlify.app/aioplayer?id=1108",
-
-        image: DEMO_THUMB
-
-    }],
-
-    width: "100%",
-    height: "100%",
-
-    aspectratio: "16:9",
-
-    stretching: "uniform",
-
-    autostart: false,
-
-    controls: true,
-
-    fullscreen: true
-
-});
+/* PLAYER SOURCE */
+player.load([{
+    file: "https://crickld2026.netlify.app/aioplayer?id=1108",
+    image: DEMO_THUMB
+}]);
 
 
 /* PLAYER READY */
 player.on('ready', function () {
-
-    let stretchModes = [
-        "uniform",
-        "fill",
-        "exactfit",
-        "none"
-    ];
-
-    let current = 0;
-
-
-    /* CUSTOM STRETCH BUTTON */
-    player.addButton(
-
-        "https://plain-apac-prod-public.komododecks.com/202605/15/JrbwHym1y6mzCaC2awsH/image.jpg",
-
-        "Stretch Mode",
-
-        function () {
-
-            current++;
-
-            if(current >= stretchModes.length){
-                current = 0;
-            }
-
-            const mode =
-            stretchModes[current];
-
-            player.setConfig({
-                stretching: mode
-            });
-
-
-            /* START THUMB */
-            const preview =
-            document.querySelector(".jw-preview");
-
-            if(preview){
-
-                if(mode === "fill"){
-
-                    preview.style.backgroundSize =
-                    "cover";
-
-                }else if(mode === "exactfit"){
-
-                    preview.style.backgroundSize =
-                    "100% 100%";
-
-                }else{
-
-                    preview.style.backgroundSize =
-                    "contain";
-
-                }
-
-            }
-
-
-            /* PAUSE THUMB */
-            const pauseThumb =
-            document.getElementById("pause-thumb");
-
-            if(pauseThumb){
-
-                if(mode === "fill"){
-
-                    pauseThumb.style.backgroundSize =
-                    "cover";
-
-                }else if(mode === "exactfit"){
-
-                    pauseThumb.style.backgroundSize =
-                    "100% 100%";
-
-                }else{
-
-                    pauseThumb.style.backgroundSize =
-                    "contain";
-
-                }
-
-            }
-
-
-            /* LOGO */
-            const logo =
-            document.getElementById("custom-logo");
-
-            if(logo){
-
-                if(mode === "fill"){
-
-                    logo.style.transform =
-                    "scale(1.25)";
-
-                }else if(mode === "exactfit"){
-
-                    logo.style.transform =
-                    "scaleX(1.35) scaleY(1.05)";
-
-                }else{
-
-                    logo.style.transform =
-                    "scale(1)";
-
-                }
-
-            }
-
-        },
-
-        "stretch-button"
-
-    );
-
 
     /* CUSTOM LOGO */
     const logo =
@@ -242,39 +99,28 @@ player.on('ready', function () {
     logo.id = "custom-logo";
 
     logo.style.position = "absolute";
-
     logo.style.top = "15px";
-
     logo.style.left = "15px";
 
     logo.style.width = "80px";
-
     logo.style.height = "80px";
 
     logo.style.objectFit = "contain";
-
     logo.style.borderRadius = "50%";
 
     logo.style.zIndex = "999999";
-
     logo.style.pointerEvents = "none";
-
-    logo.style.transition = "0.3s ease";
 
     player.getContainer().appendChild(logo);
 
 });
 
 
-/* SHOW THUMBNAIL AGAIN ON PAUSE */
+/* SHOW THUMBNAIL ON PAUSE */
 player.on("pause", function(){
 
     const container =
     player.getContainer();
-
-    container.classList.add(
-        "jw-user-active"
-    );
 
     let overlay =
     document.getElementById("pause-thumb");
@@ -330,31 +176,10 @@ player.on("pause", function(){
     overlay.style.display =
     "block";
 
-
-    /* SHOW CONTROLS */
-    const controls =
-    container.querySelector(".jw-controls");
-
-    if(controls){
-
-        controls.style.opacity =
-        "1";
-
-        controls.style.visibility =
-        "visible";
-
-        controls.style.display =
-        "flex";
-
-        controls.style.zIndex =
-        "99999";
-
-    }
-
 });
 
 
-/* HIDE THUMB WHEN PLAY */
+/* HIDE THUMBNAIL WHEN PLAY */
 player.on("play", function(){
 
     const overlay =
@@ -366,26 +191,6 @@ player.on("play", function(){
         "none";
 
     }
-
-});
-
-
-/* ERROR */
-player.on("error", e => {
-
-    document.body.innerHTML = `
-    <div style="
-        color:white;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        height:100vh;
-        background:#000;
-        font-family:Arial;
-        font-size:20px;
-    ">
-        Stream Error (${e.code})
-    </div>`;
 
 });
 </script>
