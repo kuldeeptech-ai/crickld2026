@@ -11,7 +11,7 @@
 <script src="//content.jwplatform.com/libraries/SAHhwvZq.js"></script>
 
     
- <style>
+<style>
 html,
 body {
     margin: 0;
@@ -22,25 +22,56 @@ body {
     background: #000;
 }
 
+/* FULLSCREEN PLAYER */
 #player-frame {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100vw;
-    height: 100vh;
-    border: 0;
+
+    /* ADDRESS BAR HEIGHT FIX */
+    height: 100dvh;
+
+    border: none;
     background: #000;
+}
+
+/* MOBILE FIX */
+@supports not (height: 100dvh) {
+    #player-frame {
+        height: 100vh;
+    }
 }
 </style>
 
 <iframe
     id="player-frame"
     src="https://crickld2026.netlify.app/aioplayer?id=1108"
+    allow="autoplay; fullscreen"
     allowfullscreen
     webkitallowfullscreen
-    mozallowfullscreen
-    frameborder="0">
+    mozallowfullscreen>
 </iframe>
 
+<script>
+/* EXTRA MOBILE FULL HEIGHT FIX */
+function setFullHeight() {
+
+    document.documentElement.style.height =
+    window.innerHeight + "px";
+
+    document.body.style.height =
+    window.innerHeight + "px";
+
+}
+
+setFullHeight();
+
+window.addEventListener(
+    "resize",
+    setFullHeight
+);
+</script>
     
 </body>
 </html>
