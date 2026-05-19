@@ -70,7 +70,49 @@ html, body {
         </div>
     </div>
 </div>
+
+
+    <style>
+html,
+body,
+#player {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    overflow: hidden;
+}
+
+.jwplayer {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+}
+
+.jw-aspect {
+    padding-top: 0 !important;
+}
+
+iframe {
+    width: 100% !important;
+    height: 100% !important;
+    border: 0 !important;
+}
+</style>
+
 <script>
+/* FORCE FULLSCREEN STYLE */
+document.documentElement.style.width = "100%";
+document.documentElement.style.height = "100%";
+
+document.body.style.width = "100%";
+document.body.style.height = "100%";
+document.body.style.margin = "0";
+document.body.style.background = "#000";
+
+
 /* CUSTOM THUMBNAIL */
 const DEMO_THUMB =
 "https://plain-apac-prod-public.komododecks.com/202605/15/BBmtvaRJgaiPJkb68zIS/image.jpg";
@@ -80,17 +122,23 @@ const DEMO_LOGO =
 "https://plain-apac-prod-public.komododecks.com/202605/15/n37lRAW4k538Hu2b6abv/image.png";
 
 
-/* PLAYER SOURCE */
+/* LOAD PLAYER */
 player.load([{
     file: "https://crickld2026.netlify.app/aioplayer?id=1108",
     image: DEMO_THUMB
 }]);
 
 
-/* PLAYER READY */
-player.on('ready', function () {
+/* READY */
+player.on("ready", function () {
 
-    /* CUSTOM LOGO */
+    player.setConfig({
+        width: "100%",
+        height: "100%",
+        aspectratio: ""
+    });
+
+    /* LOGO */
     const logo =
     document.createElement("img");
 
@@ -116,7 +164,7 @@ player.on('ready', function () {
 });
 
 
-/* SHOW THUMBNAIL ON PAUSE */
+/* PAUSE THUMB */
 player.on("pause", function(){
 
     const container =
@@ -158,7 +206,7 @@ player.on("pause", function(){
         "no-repeat";
 
         overlay.style.backgroundSize =
-        "contain";
+        "cover";
 
         overlay.style.backgroundColor =
         "#000";
@@ -179,7 +227,7 @@ player.on("pause", function(){
 });
 
 
-/* HIDE THUMBNAIL WHEN PLAY */
+/* PLAY */
 player.on("play", function(){
 
     const overlay =
@@ -194,5 +242,7 @@ player.on("play", function(){
 
 });
 </script>
+
+
 </body>
 </html>
