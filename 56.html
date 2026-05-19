@@ -22,25 +22,14 @@ body {
     background: #000;
 }
 
-/* FULLSCREEN PLAYER */
+/* REAL FULLSCREEN */
 #player-frame {
     position: fixed;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100vw;
-
-    /* ADDRESS BAR HEIGHT FIX */
-    height: 100dvh;
-
-    border: none;
+    height: 100vh;
+    border: 0;
     background: #000;
-}
-
-/* MOBILE FIX */
-@supports not (height: 100dvh) {
-    #player-frame {
-        height: 100vh;
-    }
 }
 </style>
 
@@ -54,24 +43,44 @@ body {
 </iframe>
 
 <script>
-/* EXTRA MOBILE FULL HEIGHT FIX */
-function setFullHeight() {
+/* FORCE MOBILE FULLSCREEN HEIGHT */
+function fixHeight() {
 
-    document.documentElement.style.height =
-    window.innerHeight + "px";
+    let vh =
+    window.innerHeight;
 
     document.body.style.height =
-    window.innerHeight + "px";
+    vh + "px";
+
+    document.documentElement.style.height =
+    vh + "px";
+
+    const iframe =
+    document.getElementById("player-frame");
+
+    iframe.style.height =
+    vh + "px";
 
 }
 
-setFullHeight();
+/* RUN */
+fixHeight();
 
+/* ON ROTATE / RESIZE */
 window.addEventListener(
     "resize",
-    setFullHeight
+    fixHeight
 );
-</script>
-    
+
+window.addEventListener(
+    "orientationchange",
+    fixHeight
+);
+
+
+/* HIDE PAGE SCROLL */
+document.body.style.overflow =
+"hidden";
+</script>    
 </body>
 </html>
