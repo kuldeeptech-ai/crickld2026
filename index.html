@@ -226,27 +226,29 @@ body::after{
 }
 
 /* ================= PLAYER ================= */
-
+/* PLAYER WRAPPER */
 .player-wrapper{
     width:100%;
     position:relative;
     background:#000;
+
+    /* SAME SIZE EVERY TIME */
+    aspect-ratio:16/9;
+
+    overflow:hidden;
 }
 
+/* IFRAME VIDEO */
 #videoFrame{
     width:100%;
-
-    /* 16:9 se thoda bada */
-    height:65vw;
-
-    min-height:260px;
-
-    max-height:88vh;
+    height:100%;
 
     border:none;
     display:block;
+
     background:#000;
 }
+
 /* ================= CHANNEL NAME ================= */
 
 .channel-overlay{
