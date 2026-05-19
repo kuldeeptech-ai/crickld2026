@@ -9,67 +9,53 @@
 <title>Live Stream</title>
 
 <script src="//content.jwplatform.com/libraries/SAHhwvZq.js"></script>
-<style>
+
+    
+    <style>
 html,
-body {
-    width: 100%;
-    height: 100%;
+body,
+#player {
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     background: #000;
 }
 
-#player {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #000;
-}
-
 .jwplayer {
-    width: 100% !important;
-    height: 100% !important;
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: #000 !important;
 }
 
 .jw-aspect {
-    display: none !important;
+    padding-top: 0 !important;
 }
 
 iframe {
     width: 100% !important;
     height: 100% !important;
-    border: none !important;
+    border: 0 !important;
 }
 </style>
 
-<div id="player"></div>
-
-<script src="https://cdn.jwplayer.com/libraries/KB5zFt7A.js"></script>
-
 <script>
-jwplayer.key = "YOUR_JWPLAYER_KEY";
-
-const player = jwplayer("player").setup({
-
-    file:
-    "https://crickld2026.netlify.app/aioplayer?id=1108",
-
-    width: "100%",
-
-    height: "100%",
-
-    autostart: false,
-
-    controls: true,
-
-    stretching: "fill"
-
-});
+/* EXISTING JWPLAYER INSTANCE */
+const player = jwplayer("player");
 
 
-/* FORCE FULLSCREEN VIEW */
+/* LOAD SOURCE */
+player.load([{
+    sources: [{
+        file: "https://crickld2026.netlify.app/aioplayer?id=1108"
+    }]
+}]);
+
+
+/* FORCE FULLSCREEN LAYOUT */
 player.on("ready", function () {
 
     const container =
@@ -93,7 +79,24 @@ player.on("ready", function () {
     container.style.zIndex =
     "999999";
 
+    player.resize(
+        window.innerWidth,
+        window.innerHeight
+    );
+
+});
+
+
+/* AUTO RESIZE */
+window.addEventListener("resize", function () {
+
+    player.resize(
+        window.innerWidth,
+        window.innerHeight
+    );
+
 });
 </script>
+
 </body>
 </html>
