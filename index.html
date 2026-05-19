@@ -829,8 +829,6 @@ movies : {
 const videoFrame =
 document.getElementById("videoFrame");
 
-const channelName =
-document.getElementById("channelName");
 
 /* ================= LOAD CHANNEL ================= */
 
@@ -844,8 +842,7 @@ function loadChannel(id){
 
     const channel = channels[id];
 
-    channelName.innerText = channel.name;
-
+ 
     videoFrame.src = "";
 
     setTimeout(()=>{
