@@ -594,6 +594,11 @@ body::after{
 
 }
 
+
+/* Added */
+.hidden-default{display:none !important;}
+.channel-icon{width:56px;height:56px;object-fit:contain;display:block;margin:0 auto 10px;}
+
 </style>
 </head>
 
@@ -676,37 +681,43 @@ body::after{
         📺 LIVE CHANNELS
     </div>
 
-    <div class="grid">
+    <div class="grid" data-show="true">
         
-<div class="card" data-id="kayo">
-            <h3>Kayo Hindi only</h3>
+<div class="card" data-id="kayo" data-show="false">
+            
+<img class="channel-icon" src="images/placeholder.png" alt="icon"><h3>Kayo Hindi only</h3>
             <p>High Quality</p>
 </div>
         
 
-        <div class="card" data-id="english">
-            <h3>English IND only</h3>
+        <div class="card" data-id="english" data-show="false">
+            
+<img class="channel-icon" src="images/placeholder.png" alt="icon"><h3>English IND only</h3>
             <p>High Quality</p>
         </div>
 
-        <div class="card" data-id="tamil">
-            <h3>Tamil IND only</h3>
+        <div class="card" data-id="tamil" data-show="false">
+            
+<img class="channel-icon" src="images/placeholder.png" alt="icon"><h3>Tamil IND only</h3>
             <p>High Quality</p>
         </div>
 
         
 
         
-        <div class="card active" data-id="hindi1">
+        <div class="card active" data-id="hindi1" data-show="false">
+            <img class="channel-icon" src="images/placeholder.png" alt="icon"><h3>Hindi IND only</h3>
             <h3>Hindi IND only</h3>
             <p>High Quality</p>
         </div>
-        <div class="card" data-id="hindi2">
-            <h3>Star Sports 2 Hindi</h3>
+        <div class="card" data-id="hindi2" data-show="false">
+            
+<img class="channel-icon" src="images/placeholder.png" alt="icon"><h3>Star Sports 2 Hindi</h3>
             <p>High Quality</p>
         </div>
-        <div class="card" data-id="sony3hindi">
-            <h3>Sony Ten 3 Hindi</h3>
+        <div class="card" data-id="sony3hindi" data-show="true">
+            
+<img class="channel-icon" src="images/sonysports3.png" alt="icon"><h3>Sony Ten 3 Hindi</h3>
             <p>High Quality</p>
         </div>
 </div>
@@ -738,7 +749,7 @@ body::after{
 
     <!-- ================= JIO WIDGET ================= -->
 
-    <div class="widget-box">
+    <div class="widget-box" data-show="false">
 
         <div class="widget-title">
             🏏 LIVE CRICKET UPDATES
@@ -1184,6 +1195,23 @@ installPopup.style.display = "none";
 
 })();
     </script>
+
+<script>
+function showChannelBoxes(){document.querySelector('.grid').classList.remove('hidden-default');}
+function hideChannelBoxes(){document.querySelector('.grid').classList.add('hidden-default');}
+function showScoreboard(){document.querySelector('.widget-box').classList.remove('hidden-default');}
+function hideScoreboard(){document.querySelector('.widget-box').classList.add('hidden-default');}
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ document.querySelectorAll("[data-show]").forEach(el=>{
+   if(el.dataset.show==="false") el.style.display="none";
+ });
+});
+</script>
+
 </body>
     <script>
 /* ================= ANTI INSPECT ================= */
